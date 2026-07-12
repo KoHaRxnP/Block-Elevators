@@ -1,5 +1,14 @@
 # Elevators
 
+<table>
+	<thead>
+    	<tr>
+      		<th style="text-align:center">English</th>
+      		<th style="text-align:center"><a href="README_ja.md">日本語</a></th>
+    	</tr>
+  	</thead>
+</table>
+
 A simple block-based elevator plugin for Paper.
 
 Place elevator blocks vertically and jump to move up, or sneak to move down instantly.
