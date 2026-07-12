@@ -56,7 +56,7 @@ max-search-range: 0
 # サウンド設定
 sound:
   enable: true
-  name: entity_iron_golem_attack
+  name: entity.iron_golem.attack
   volume: 1.0
   jump-pitch: 1.2
   sneak-pitch: 0.8
