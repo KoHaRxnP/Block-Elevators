@@ -24,7 +24,7 @@ Download the latest version from the [Releases](https://github.com/ryusei-sky/El
 - Customizable elevator block materials
 - Configurable maximum search range (`0` for unlimited)
 - Configurable teleport sounds (sound, volume, and pitch)
-- Prevents teleportation if the destination is blocked
+- Cancels teleportation if the destination is blocked (Still works with liquids, carpets, slabs, and similar blocks, allowing you to camouflage the elevator's appearance.)
 - Supports Paper 1.21.x
 
 ## Installation
