@@ -124,20 +124,19 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         if (event.getTo() == null) return;
 
         double yDiff = event.getTo().getY() - event.getFrom().getY();
+        Player player = event.getPlayer();
         
         int jumpBoostLevel = 0;
         if (player.hasPotionEffect(org.bukkit.potion.PotionEffectType.JUMP_BOOST)) {
         var effect = player.getPotionEffect(org.bukkit.potion.PotionEffectType.JUMP_BOOST);
-        if (effect != null) {
+          if (effect != null) {
         jumpBoostLevel = effect.getAmplifier() + 1;
-    }
-}
+          }
+        }
 
         double minJumpVelocity = 0.41 + 0.1 * jumpBoostLevel;
 
         if (yDiff < minJumpVelocity || yDiff > (minJumpVelocity + 0.1)) return;
-
-        Player player = event.getPlayer();
 
         useElevator(
                 player,
