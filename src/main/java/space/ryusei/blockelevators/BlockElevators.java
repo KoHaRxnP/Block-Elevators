@@ -209,7 +209,7 @@ public final class BlockElevators extends JavaPlugin implements Listener {
 
         int limit = maxRange <= 0
                 ? (direction == Direction.UP ? max : min)
-                : start.getY() + (direction.value * maxRange);
+                : start.getY() + direction.value * maxRange;
         
         limit = Math.max(min, Math.min(max, limit));
 
