@@ -264,7 +264,7 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         if (expire == null || now >= expire) {
             cooldown.put(
                     uuid,
-                    now + (cooldownSeconds * 1000L)
+                    now + cooldownSeconds * 1000L
             );
 
             return false;
