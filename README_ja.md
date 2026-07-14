@@ -15,11 +15,9 @@
 
 ## デモ
 
-<p align="center">
-  <a href="https://youtu.be/RzJluRqwEJk">
-    <img src="https://img.youtube.com/vi/RzJluRqwEJk/maxresdefault.jpg" alt="Block Elevators Demo" width="800">
-  </a>
-</p>
+<a href="https://youtu.be/RzJluRqwEJk">
+  <img src="https://img.youtube.com/vi/RzJluRqwEJk/maxresdefault.jpg" alt="Block Elevators Demo" width="500">
+</a>
 
 ## ダウンロード
 
