@@ -1,6 +1,6 @@
 # Permissions:
-# blockelevators.use - Allows players to use elevators (Default: true)
-# blockelevators.reload - Allows reloading the configuration (Default: op)
+# blockelevators.use - Use elevators (Default: true)
+# blockelevators.reload - Reload config (Default: op)
 
 # Worlds where elevators are enabled
 # Empty list means all worlds
