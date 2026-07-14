@@ -87,15 +87,17 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         String soundName = getConfig().getString(
                 "sound.name",
                 "ENTITY_ENDERMAN_TELEPORT"
-        );
+        ).toUpperCase();
 
-        Sound loadedSound = Registry.SOUNDS.get(
-                NamespacedKey.minecraft(soundName.toLowerCase())
-        );
+        try {
+            sound = Sound.valueOf(soundName);
+        } catch (IllegalArgumentException e) {
 
-        sound = loadedSound != null
-                ? loadedSound
-                : Sound.ENTITY_ENDERMAN_TELEPORT;
+            Sound loadedSound = Registry.SOUNDS.get(
+                    NamespacedKey.minecraft(soundName.toLowerCase())
+            );
+            sound = loadedSound != null ? loadedSound : Sound.ENTITY_ENDERMAN_TELEPORT;
+        }
 
         volume = (float) getConfig().getDouble("sound.volume", 1.0);
         jumpPitch = (float) getConfig().getDouble("sound.jump-pitch", 1.2);
@@ -126,10 +128,17 @@ public final class BlockElevators extends JavaPlugin implements Listener {
     @EventHandler
     public void onJump(PlayerMoveEvent event) {
         if (event.getTo() == null) return;
+        
+        if (event.getFrom().getY() == event.getTo().getY()) return;
+        
         if (event.getFrom().getY() >= event.getTo().getY()) return;
+        
+        Player player = event.getPlayer();
+        
+        if (player.isOnGround()) return;
 
         useElevator(
-                event.getPlayer(),
+                player,
                 Direction.UP,
                 jumpPitch
         );
@@ -199,8 +208,10 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         int max = start.getWorld().getMaxHeight();
 
         int limit = maxRange <= 0
-                ? direction == Direction.UP ? max : min
-                : start.getY() + direction.value * maxRange;
+                ? (direction == Direction.UP ? max : min)
+                : start.getY() + (direction.value * maxRange);
+        
+        limit = Math.max(min, Math.min(max, limit));
 
         for (
                 int y = start.getY() + direction.value;
@@ -233,8 +244,10 @@ public final class BlockElevators extends JavaPlugin implements Listener {
                 .add(0, 1, 0)
                 .getBlock();
 
-        return !feet.getType().isOccluding()
-                && !head.getType().isOccluding();
+        return feet.getType().isPassable()
+                && head.getType().isPassable()
+                && !feet.isLiquid()
+                && !head.isLiquid();
     }
 
     private boolean isCooldown(Player player) {
@@ -251,7 +264,7 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         if (expire == null || now >= expire) {
             cooldown.put(
                     uuid,
-                    now + cooldownSeconds * 1000L
+                    now + (cooldownSeconds * 1000L)
             );
 
             return false;
