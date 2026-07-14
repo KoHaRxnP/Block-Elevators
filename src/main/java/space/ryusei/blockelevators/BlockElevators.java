@@ -27,7 +27,7 @@ public final class BlockElevators extends JavaPlugin implements Listener {
 
     private final Set<Material> materials = new HashSet<>();
     private final Set<String> worlds = new HashSet<>();
-    private final Map<UUID, Long> cooldowns = new HashMap<>(); // 複数形に統一
+    private final Map<UUID, Long> cooldowns = new HashMap<>();
 
     private int maxRange;
     private int cooldownSeconds;
