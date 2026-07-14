@@ -41,40 +41,39 @@ Stand on an elevator block, then jump to go up or sneak to go down.
 
 | Command | Description |
 |----------|-------------|
-| `/elevator reload` | Reload the configuration |
+| `/block-elevators-reload` | Reload config |
 
 ## Permissions
 
 | Permission | Description | Default |
 |------------|-------------|---------|
-| `elevator.use` | Allows players to use elevators | `true` |
-| `elevator.reload` | Allows reloading the configuration | `op` |
+| `blockelevators.use` | Use elevators | `true` |
+| `blockelevators.reload` | Reload config | `op` |
 
 ## config.yml
 
 ```yml
 # Permissions:
-# elevator.use - Permission to use elevators (enabled for all players by default)
-# elevator.reload - Permission to reload the configuration (enabled for OPs by default)
+# blockelevators.use - Allows players to use elevators (Default: true)
+# blockelevators.reload - Allows reloading the configuration (Default: op)
 
 # Worlds where elevators are enabled
-# Leave empty to enable elevators in all worlds
+# Empty list means all worlds
 worlds: []
 #  - world
 
 # Cooldown between elevator uses (seconds)
-# Set to 0 to disable
+# 0 disables cooldown
 cooldown: 0
 
-# Blocks that can be used as elevators
+# Materials to be used as elevator blocks
 materials:
   - IRON_BLOCK
 
-# Maximum distance to search for elevators
-# Set to 0 for unlimited distance
+# Maximum search range
+# 0 means unlimited
 max-search-range: 0
 
-# Sound settings
 sound:
   enable: true
   name: entity.iron_golem.attack
