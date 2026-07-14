@@ -11,7 +11,7 @@
 
 A Paper plugin that lets you create elevators by stacking blocks vertically.
 
-Stand on an elevator block, then jump to go up or sneak to go down.
+Create elevators with blocks. Jump up, sneak down.
 
 ## Demo
 
@@ -54,8 +54,8 @@ Stand on an elevator block, then jump to go up or sneak to go down.
 
 ```yml
 # Permissions:
-# blockelevators.use - Allows players to use elevators (Default: true)
-# blockelevators.reload - Allows reloading the configuration (Default: op)
+# blockelevators.use - Use elevators (Default: true)
+# blockelevators.reload - Reload config (Default: op)
 
 # Worlds where elevators are enabled
 # Empty list means all worlds
