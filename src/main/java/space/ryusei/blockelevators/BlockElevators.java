@@ -245,10 +245,8 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         Block feet = location.getBlock();
         Block head = location.clone().add(0, 1, 0).getBlock();
 
-        return feet.getType().isPassable()
-                && head.getType().isPassable()
-                && !feet.isLiquid()
-                && !head.isLiquid();
+        return !feet.getType().isOccluding()
+                && !head.getType().isOccluding();
     }
 
     private boolean hasCooldown(Player player) {
