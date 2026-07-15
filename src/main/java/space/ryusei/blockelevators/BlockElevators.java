@@ -83,16 +83,15 @@ public final class BlockElevators extends JavaPlugin implements Listener {
         String soundName = getConfig().getString(
                 "sound.name",
                 "ENTITY_ENDERMAN_TELEPORT"
-        ).toUpperCase();
+        );
 
-        try {
-            sound = Sound.valueOf(soundName);
-        } catch (IllegalArgumentException e) {
-            Sound loadedSound = Registry.SOUNDS.get(
-                    NamespacedKey.minecraft(soundName.toLowerCase())
-            );
-            sound = loadedSound != null ? loadedSound : Sound.ENTITY_ENDERMAN_TELEPORT;
-        }
+        Sound loadedSound = Registry.SOUNDS.get(
+                NamespacedKey.minecraft(soundName.toLowerCase())
+        );
+
+        sound = loadedSound != null
+                ? loadedSound
+                : Sound.ENTITY_ENDERMAN_TELEPORT;
 
         volume = (float) getConfig().getDouble("sound.volume", 1.0);
         jumpPitch = (float) getConfig().getDouble("sound.jump-pitch", 1.2);
@@ -125,13 +124,13 @@ public final class BlockElevators extends JavaPlugin implements Listener {
 
         double yDiff = event.getTo().getY() - event.getFrom().getY();
         Player player = event.getPlayer();
-        
+
         int jumpBoostLevel = 0;
         if (player.hasPotionEffect(org.bukkit.potion.PotionEffectType.JUMP_BOOST)) {
-        var effect = player.getPotionEffect(org.bukkit.potion.PotionEffectType.JUMP_BOOST);
-          if (effect != null) {
-        jumpBoostLevel = effect.getAmplifier() + 1;
-          }
+            var effect = player.getPotionEffect(org.bukkit.potion.PotionEffectType.JUMP_BOOST);
+            if (effect != null) {
+                jumpBoostLevel = effect.getAmplifier() + 1;
+            }
         }
 
         double minJumpVelocity = 0.41 + 0.1 * jumpBoostLevel;
@@ -264,7 +263,7 @@ public final class BlockElevators extends JavaPlugin implements Listener {
 
         cooldowns.put(
                 player.getUniqueId(),
-                System.currentTimeMillis() + (cooldownSeconds * 1000L)
+                System.currentTimeMillis() + cooldownSeconds * 1000L
         );
     }
 }
