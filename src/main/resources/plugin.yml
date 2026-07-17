@@ -1,6 +1,6 @@
 name: Block-Elevators
 version: 1.0.0
-main: space.ryusei.blockelevators.BlockElevators
+main: jp.havenmc.blockelevators.BlockElevators
 api-version: '1.21'
 author: ryusei_sky
 
